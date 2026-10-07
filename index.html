@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7b1113" />
+  <title>PuriAir | Indoor Air Quality Analytics</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- FRONTEND ACCESS GATE -->
+  <div class="access-gate" id="accessGate">
+    <div class="access-card">
+      <div class="access-brand"><div class="brand-mark">PUP</div><div><h1>PuriAir</h1><span>Indoor Air Quality Analytics Platform</span></div></div>
+      <p class="access-kicker">SYSTEM ACCESS</p>
+      <h2>Select your access type</h2>
+      <p class="access-description">Choose the role that matches your account. Access permissions are enforced by the frontend for this prototype and will be connected to Firebase Authentication in the backend phase.</p>
+      <div class="role-grid">
+        <button class="role-card" data-role="admin"><span class="role-icon">AD</span><strong>Administrator</strong><small>Full dashboard access, classroom management, automated control, alerts and recommendations.</small><b>Enter as Admin →</b></button>
+        <button class="role-card" data-role="student"><span class="role-icon student">ST</span><strong>Student</strong><small>Read-only access to project information, classroom conditions, overview, and analytics.</small><b>Enter as Student →</b></button>
+      </div>
+      <div class="access-note"><span>●</span> Demo frontend access · Backend authentication will be connected later.</div>
+    </div>
+  </div>
+
+  <div class="app-shell hidden" id="appShell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">PUP</div>
+        <div><h1>PuriAir</h1><span>Air Quality Analytics</span></div>
+      </div>
+
+      <nav class="nav-menu" aria-label="Main navigation">
+        <button class="nav-item active" data-page="puriair"><span class="nav-icon">◆</span>PuriAir</button>
+                <button class="nav-item" data-page="overview"><span class="nav-icon">⌂</span>Overview</button>
+        <button class="nav-item" data-page="classrooms"><span class="nav-icon">▦</span>Classrooms</button>
+        <button class="nav-item" data-page="analytics"><span class="nav-icon">◒</span>Analytics</button>
+        <button class="nav-item admin-only" data-page="alerts"><span class="nav-icon">!</span>Alerts</button>
+        <button class="nav-item admin-only" data-page="recommendations"><span class="nav-icon">✦</span>Recommendations</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="system-health"><span class="status-dot"></span><div><strong>System Online</strong><small>Firebase sync ready</small></div></div>
+        <button class="nav-item about-bottom" data-page="about"><span class="nav-icon">ⓘ</span>About</button>
+        <button class="nav-item admin-only settings-item" data-page="settings"><span class="nav-icon">⚙</span>Settings</button>
+        <button class="nav-item logout-item" id="logoutButton"><span class="nav-icon">↪</span>Switch Access</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
+        <div class="page-heading"><span class="eyebrow">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</span><h2 id="pageTitle">PuriAir</h2></div>
+        <div class="topbar-actions">
+          <div class="connection-pill"><span class="status-dot"></span><span>Live</span></div>
+          <div class="clock" id="clock">--:--:--</div>
+          <button class="icon-button admin-only" id="notificationButton" title="Alerts">🔔<span class="notification-count">3</span></button>
+          <button class="user-role-badge" id="userRoleBadge" title="Current access">ADMIN</button>
+        </div>
+      </header>
+
+      <!-- PURIAIR PROJECT INFORMATION -->
+      <div class="content" id="page-puriair">
+        <section class="project-hero">
+          <div><p class="section-kicker">PROJECT INFORMATION</p><h3>PuriAir</h3><p class="project-title">An IoT Multi-Classroom Air Quality Analytics Platform with Occupancy-Driven Predictive Purification</p><p class="section-description">PuriAir is designed to provide real-time environmental visibility, predictive intelligence, and operational awareness for indoor classroom environments.</p></div>
+          <div class="project-mark"><span>PUP</span><small>College of Engineering<br/>Computer Engineering</small></div>
+        </section>
+        <section class="project-grid">
+          <article class="panel project-card"><span class="project-number">01</span><h4>Real-Time Environmental Visibility</h4><p>Continuously monitors and visualizes CO₂, PM2.5, temperature, relative humidity, and classroom environmental status through live telemetry.</p><ul><li>Live sensor telemetry</li><li>Classroom Health Index (CHI)</li><li>Multi-classroom environmental overview</li></ul></article>
+          <article class="panel project-card"><span class="project-number">02</span><h4>Occupancy-Driven Predictive Analytics</h4><p>Uses classroom occupancy and environmental trends to anticipate near-term pollutant accumulation and potential air-quality deterioration.</p><ul><li>PIR-based occupancy context</li><li>Historical trend analysis</li><li>15-minute forecasting</li></ul></article>
+          <article class="panel project-card"><span class="project-number">03</span><h4>Automated Purification</h4><p>Supports automated relay-based purification responses when environmental conditions require intervention, while providing real-time operational feedback.</p><ul><li>Purifier state monitoring</li><li>Automated control logic</li><li>Manual administrator override</li></ul></article>
+          <article class="panel project-card"><span class="project-number">04</span><h4>Decision Support</h4><p>Transforms environmental data into actionable alerts and recommendations for administrators, faculty, and staff.</p><ul><li>Threshold alerts</li><li>Predictive warnings</li><li>Air-management recommendations</li></ul></article>
+        </section>
+        <section class="panel system-purpose"><div class="panel-header"><div><span class="section-kicker">SYSTEM INTENTION</span><h4>From Monitoring to Proactive Action</h4></div></div><div class="purpose-flow"><div><b>Sense</b><span>Collect indoor environmental and occupancy data.</span></div><i>→</i><div><b>Analyze</b><span>Evaluate CHI and identify current trends.</span></div><i>→</i><div><b>Predict</b><span>Estimate near-term environmental changes.</span></div><i>→</i><div><b>Act</b><span>Support purification and safety decisions.</span></div></div></section>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="content hidden" id="page-about">
+        <section class="hero-row"><div><p class="section-kicker">RESEARCH TEAM</p><h3>About PuriAir</h3><p class="section-description">Researcher and project information for the PuriAir IoT multi-classroom air quality analytics platform.</p></div></section>
+        <section class="about-hero panel"><div class="about-placeholder-mark">P</div><div><span class="section-kicker">PROJECT RESEARCH</span><h4>PuriAir: an IoT Multi-Classroom Air Quality Analytics Platform with Occupancy-Driven Predictive Purification</h4><p>This section is reserved for the final researcher profiles, affiliations, photographs, research roles, and contact details. The researcher information below is currently a placeholder for the project prototype.</p></div></section>
+        <section class="researcher-grid">
+          <article class="panel researcher-card"><div class="researcher-photo">PHOTO<br>PLACEHOLDER</div><span class="section-kicker">RESEARCHER 01</span><h4>ANTONETTE CONCEPCION T. ISIP</h4><p>Role: <strong>Researcher / Project Member</strong></p><small>Final profile details to be added.</small></article>
+          <article class="panel researcher-card"><div class="researcher-photo">PHOTO<br>PLACEHOLDER</div><span class="section-kicker">RESEARCHER 02</span><h4>PRINCESS ANGELINE A. MENDOZA</h4><p>Role: <strong>Researcher / Project Member</strong></p><small>Final profile details to be added.</small></article>
+          <article class="panel researcher-card"><div class="researcher-photo">PHOTO<br>PLACEHOLDER</div><span class="section-kicker">RESEARCHER 03</span><h4>ANGELA NICOLE D. OMEGA</h4><p>Role: <strong>Researcher / Project Member</strong></p><small>Final profile details to be added.</small></article>
+          <article class="panel researcher-card"><div class="researcher-photo">PHOTO<br>PLACEHOLDER</div><span class="section-kicker">RESEARCHER 04</span><h4>SAMUEL ANGELO T. SARIA</h4><p>Role: <strong>Researcher / Project Member</strong></p><small>Final profile details to be added.</small></article>
+        </section>
+      </div>
+
+      <!-- OVERVIEW -->
+      <div class="content hidden" id="page-overview">
+        <section class="hero-row"><div><p class="section-kicker">REAL-TIME ENVIRONMENTAL VISIBILITY</p><h3>Indoor Air Quality at a Glance</h3><p class="section-description">View the current environmental condition of monitored classrooms.</p></div><div class="last-sync">Last synchronized <strong id="lastSync">just now</strong></div></section>
+        <section class="summary-grid">
+          <article class="metric-card"><div class="metric-top"><span>Classrooms Monitored</span><span class="metric-icon">▦</span></div><div class="metric-value" id="classroomCount">6</div><div class="metric-foot positive">● Sensor nodes connected</div></article>
+          <article class="metric-card"><div class="metric-top"><span>Safe Classrooms</span><span class="metric-icon">✓</span></div><div class="metric-value" id="safeCount">3</div><div class="metric-foot positive">Within target conditions</div></article>
+          <article class="metric-card"><div class="metric-top"><span>Occupied Rooms</span><span class="metric-icon">♟</span></div><div class="metric-value" id="occupiedCount">4</div><div class="metric-foot neutral">Based on PIR telemetry</div></article>
+          <article class="metric-card warning-card"><div class="metric-top"><span>Rooms Requiring Attention</span><span class="metric-icon">!</span></div><div class="metric-value" id="alertCount">3</div><div class="metric-foot negative">Poor or critical conditions</div></article>
+        </section>
+        <section class="dashboard-grid">
+          <article class="panel chi-panel"><div class="panel-header"><div><span class="section-kicker">SYSTEM-WIDE STATUS</span><h4>Classroom Health Index</h4></div><span class="live-label"><span class="pulse"></span> LIVE</span></div><div class="chi-layout"><div class="chi-gauge-wrap"><div class="chi-gauge" id="chiGauge"><div class="chi-inner"><strong id="overallCHI">82</strong><span>/ 100</span><small>Overall CHI</small></div></div></div><div class="legend-list"><div class="legend-row"><span class="legend-color safe"></span><strong>Safe</strong><span id="legendSafe">3</span></div><div class="legend-row"><span class="legend-color moderate"></span><strong>Moderate</strong><span id="legendModerate">1</span></div><div class="legend-row"><span class="legend-color poor"></span><strong>Poor</strong><span id="legendPoor">1</span></div><div class="legend-row"><span class="legend-color critical"></span><strong>Critical</strong><span id="legendCritical">1</span></div><div class="chi-note">CHI summarizes current environmental conditions into an operational classroom status.</div></div></div></article>
+          <article class="panel forecast-panel"><div class="panel-header"><div><span class="section-kicker">PREDICTIVE INTELLIGENCE</span><h4>15-Minute Outlook</h4></div><span class="forecast-badge">Forecast</span></div><div class="forecast-main"><div class="forecast-score">78</div><div><strong>Potential air-quality decline</strong><p>Occupancy-weighted trends indicate increasing CO₂ in active rooms.</p></div></div><div class="mini-forecast"><div><span>Now</span><strong>82</strong></div><div class="forecast-arrow">→</div><div><span>+15 min</span><strong>78</strong></div><div class="risk-tag">MODERATE RISK</div></div></article>
+        </section>
+        <section class="panel classroom-panel"><div class="panel-header"><div><span class="section-kicker">MULTI-CLASSROOM OVERVIEW</span><h4>Current Classroom Conditions</h4></div><button class="text-button" data-page-target="classrooms">View classroom details →</button></div><div class="classroom-table-wrap"><table class="data-table"><thead><tr><th>Classroom</th><th>CHI / Status</th><th>Humidity</th><th>CO₂</th><th>PM2.5</th><th>Temperature</th><th>Purifier</th></tr></thead><tbody id="overviewTable"></tbody></table></div></section>
+      </div>
+
+      <!-- CLASSROOMS -->
+      <div class="content hidden" id="page-classrooms">
+        <section class="hero-row"><div><p class="section-kicker">CLASSROOM CONDITIONS</p><h3>Live Telemetry</h3><p class="section-description">Live environmental conditions are prioritized here. Select a classroom to inspect its current telemetry.</p></div><select class="room-select" id="roomSelect"></select></section>
+        <section class="classroom-cards" id="classroomCards"></section>
+        <section class="dashboard-grid classroom-live-grid">
+          <article class="panel large-panel focused-telemetry"><div class="panel-header"><div><span class="section-kicker">FOCUSED LIVE TELEMETRY</span><h4 id="detailRoomTitle">CPE-301</h4><span class="student-purifier-activity student-only" id="studentPurifierActivity"><i></i> PURIFIER ACTIVE</span></div><div class="chi-status-wrap"><strong id="detailCHI">91</strong><span>/ 100</span><span class="status-chip safe" id="detailStatus">SAFE</span></div></div><div class="condition-meter" id="conditionMeter"><div class="condition-meter-top"><span>Current Classroom Condition</span><strong id="conditionMeterValue">91 / 100</strong></div><div class="condition-meter-track"><div class="condition-meter-zones"></div><span id="conditionMeterArrow" class="condition-arrow" style="left:91%">▼</span></div><div class="condition-meter-scale"><span>Critical</span><span>Poor</span><span>Moderate</span><span>Safe</span></div><div class="condition-meter-caption"><span id="conditionMeterCaption">CLASSROOM CONDITION · SAFE</span><strong id="detailMetricName">HUMIDITY</strong></div><div class="selected-metric-status"><span>Selected metric</span><strong id="detailMetricNameMirror">HUMIDITY</strong><span class="status-chip safe" id="detailMetricStatus">SAFE</span></div></div><div class="telemetry-grid focused-telemetry-grid" id="detailTelemetry"></div></article>
+          <aside class="admin-control-column admin-only">
+            <article class="panel purifier-panel compact-control"><div class="compact-control-header"><div><span class="section-kicker">AUTOMATED CONTROL</span><h4>Purifier</h4></div><span class="control-badge" id="controlMode">AUTO</span></div><div class="compact-control-body"><div class="fan-mini"><div class="fan-ring" id="fanRing"><span>◉</span></div><div><strong id="fanStatus">ACTIVE</strong><small>Relay DC fan</small></div></div><div class="compact-command"><span>Command</span><strong id="fanCommand">PURIFY</strong></div><button class="primary-button compact-button" id="overrideButton">Manual Override</button></div><small class="helper-text">Firebase command sync</small></article>
+            <article class="panel classroom-management"><div class="panel-header"><div><span class="section-kicker">ADMINISTRATION</span><h4>Classroom Management</h4></div><span class="management-note">Admin only</span></div><div class="management-row"><div><strong>Add or remove monitored classrooms</strong><p>Use the management actions to select an active classroom to remove or register a new classroom code.</p></div><div class="management-actions"><button class="secondary-button" id="addClassroomButton">＋ Add Classroom</button><button class="danger-button" id="removeClassroomButton">− Remove Classroom</button></div></div></article>
+          </aside>
+        </section>
+
+        <div class="modal-backdrop hidden" id="classroomModal" role="dialog" aria-modal="true" aria-labelledby="classroomModalTitle">
+          <div class="classroom-modal"><div class="modal-header"><div><span class="section-kicker" id="classroomModalKicker">CLASSROOM MANAGEMENT</span><h4 id="classroomModalTitle">Add Classroom</h4></div><button class="modal-close" id="closeClassroomModal" aria-label="Close">×</button></div>
+            <div id="addClassroomForm" class="modal-form"><label>Classroom code<input id="newClassroomCode" type="text" placeholder="e.g. CPE-307" autocomplete="off" maxlength="20"></label><p class="modal-hint">Enter the official classroom code to register it on the PuriAir dashboard.</p><div class="modal-actions"><button class="secondary-button" id="cancelClassroomModal">Cancel</button><button class="primary-button" id="confirmAddClassroom">Add Classroom</button></div></div>
+            <div id="removeClassroomForm" class="modal-form hidden"><label>Active classroom<select id="removeClassroomSelect"></select></label><p class="modal-hint">Only currently active monitored classrooms are available for removal.</p><div class="modal-actions"><button class="secondary-button" id="cancelRemoveClassroom">Cancel</button><button class="danger-button" id="confirmRemoveClassroom">Remove Classroom</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ANALYTICS: HISTORICAL TREND MOVED HERE -->
+      <div class="content hidden" id="page-analytics">
+        <section class="hero-row"><div><p class="section-kicker">PREDICTIVE ANALYTICS</p><h3>Historical Trends & Forecasting</h3><p class="section-description">Historical environmental trends are analyzed with occupancy context to anticipate potential air-quality deterioration.</p></div><div class="model-status"><span class="status-dot"></span>Models ready</div></section>
+        <section class="summary-grid"><article class="metric-card"><div class="metric-top"><span>Forecast Horizon</span><span class="metric-icon">◷</span></div><div class="metric-value">15<span class="metric-unit"> min</span></div><div class="metric-foot neutral">Near-term prediction window</div></article><article class="metric-card"><div class="metric-top"><span>Moving Average</span><span class="metric-icon">≈</span></div><div class="metric-value">5<span class="metric-unit"> pts</span></div><div class="metric-foot positive">Noise-smoothed trend</div></article><article class="metric-card"><div class="metric-top"><span>Occupancy Weight</span><span class="metric-icon">♟</span></div><div class="metric-value">0.35</div><div class="metric-foot neutral">Model influence factor</div></article><article class="metric-card"><div class="metric-top"><span>Forecast Confidence</span><span class="metric-icon">✓</span></div><div class="metric-value">91<span class="metric-unit">%</span></div><div class="metric-foot positive">Based on current telemetry</div></article></section>
+        <section class="panel"><div class="panel-header"><div><span class="section-kicker">HISTORICAL TREND</span><h4 id="analyticsChartTitle">Environmental Trajectory · CPE-301</h4></div><div class="chart-controls"><button class="chart-filter active" data-metric="humidity">Humidity</button><button class="chart-filter" data-metric="co2">CO₂</button><button class="chart-filter" data-metric="pm25">PM2.5</button><button class="chart-filter" data-metric="temperature">Temperature</button><button class="chart-filter" data-metric="chi">CHI</button></div></div><div class="chart-select-row"><label>Classroom <select id="analyticsRoomSelect"></select></label></div><div class="chart-wrap"><svg id="detailChart" viewBox="0 0 1000 330" preserveAspectRatio="none" aria-label="Environmental trend chart"></svg></div></section>
+        <section class="dashboard-grid"><article class="panel large-panel"><div class="panel-header"><div><span class="section-kicker">OCCUPANCY CORRELATION</span><h4>Occupancy vs. CO₂</h4></div><span class="forecast-badge">Positive correlation</span></div><div class="scatter-area" id="scatterArea"></div><div class="correlation-summary"><strong>r = 0.84</strong><span>Higher occupancy is currently associated with faster CO₂ accumulation.</span></div></article><article class="panel"><div class="panel-header"><div><span class="section-kicker">PREDICTIVE EVENTS</span><h4>Upcoming Risks</h4></div></div><div class="risk-list" id="riskList"></div></article></section>
+        <section class="panel"><div class="panel-header"><div><span class="section-kicker">MODEL EXPLANATION</span><h4>How PuriAir Predicts</h4></div></div><div class="process-flow"><div class="process-step"><b>01</b><strong>Collect</strong><span>CO₂, PM2.5, temperature, humidity, and PIR occupancy.</span></div><div class="process-line"></div><div class="process-step"><b>02</b><strong>Smooth</strong><span>Simple moving average reduces short-term sensor noise.</span></div><div class="process-line"></div><div class="process-step"><b>03</b><strong>Regress</strong><span>Linear regression estimates the current trajectory.</span></div><div class="process-line"></div><div class="process-step"><b>04</b><strong>Weight</strong><span>Occupancy modifies risk based on expected pollutant accumulation.</span></div><div class="process-line"></div><div class="process-step"><b>05</b><strong>Forecast</strong><span>15-minute outlook supports proactive purification decisions.</span></div></div></section>
+      </div>
+
+      <!-- ADMIN ONLY -->
+      <div class="content hidden admin-page" id="page-alerts"><section class="hero-row"><div><p class="section-kicker">OPERATIONAL AWARENESS</p><h3>Alerts & Events</h3><p class="section-description">Threshold breaches and predictive warnings requiring administrator attention.</p></div><button class="secondary-button" id="ackAll">Acknowledge all</button></section><section class="alert-summary"><div><strong>3</strong><span>Active</span></div><div><strong>7</strong><span>Resolved today</span></div><div><strong>1</strong><span>Critical</span></div><div><strong>91%</strong><span>Notification delivery</span></div></section><section class="panel"><div class="panel-header"><div><span class="section-kicker">LIVE ALERT STREAM</span><h4>System Events</h4></div></div><div class="alert-list" id="alertList"></div></section></div>
+
+      <div class="content hidden admin-page" id="page-recommendations"><section class="hero-row"><div><p class="section-kicker">DECISION SUPPORT</p><h3>Recommendations</h3><p class="section-description">Actionable suggestions generated from current conditions, trends, occupancy, and system state.</p></div><span class="recommendation-status">Updated from live telemetry</span></section><section class="recommendation-grid" id="recommendationGrid"></section></div>
+
+      <div class="content hidden admin-page" id="page-settings"><section class="hero-row"><div><p class="section-kicker">SYSTEM CONFIGURATION</p><h3>Admin Settings</h3><p class="section-description">Administrator-only thresholds, notifications, and cloud connection settings.</p></div></section><section class="settings-grid"><article class="panel"><div class="panel-header"><div><span class="section-kicker">HEALTH INDEX</span><h4>CHI Thresholds</h4></div></div><div class="threshold-list"><label>Safe <input value="80" type="number" /></label><label>Moderate <input value="60" type="number" /></label><label>Poor <input value="40" type="number" /></label><label>Critical <input value="0" type="number" /></label></div><button class="primary-button">Save Configuration</button></article><article class="panel"><div class="panel-header"><div><span class="section-kicker">NOTIFICATIONS</span><h4>Alert Preferences</h4></div></div><div class="toggle-list"><label><span>Critical alerts</span><input type="checkbox" checked /><i></i></label><label><span>Predictive warnings</span><input type="checkbox" checked /><i></i></label><label><span>Purifier state changes</span><input type="checkbox" checked /><i></i></label><label><span>Sensor disconnections</span><input type="checkbox" checked /><i></i></label></div></article><article class="panel"><div class="panel-header"><div><span class="section-kicker">CLOUD CONNECTION</span><h4>Firebase Integration</h4></div><span class="status-chip safe">READY</span></div><div class="firebase-box"><span class="firebase-logo">F</span><div><strong>Google Firebase</strong><p>Realtime database and command synchronization endpoint.</p></div></div><div class="connection-details"><span>Telemetry</span><strong>Ready for connection</strong><span>Commands</span><strong>Ready for connection</strong><span>Notifications</span><strong>Ready for connection</strong></div></article></section></div>
+
+      <footer class="footer"><span>PuriAir · IoT Multi-Classroom Air Quality Analytics Platform</span><span>Frontend prototype · Role-based access</span></footer>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"><span>✓</span><div><strong id="toastTitle">Updated</strong><small id="toastMessage">Action completed.</small></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
